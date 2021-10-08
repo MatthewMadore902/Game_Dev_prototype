@@ -15,8 +15,11 @@ public class PlayerMovement : MonoBehaviour
     public float gourndDistance = 0.4f;
     public LayerMask groundMask;
 
+    public float crouchSpeed = 6f;
+
     bool isGrounded;
 
+    bool isCrouching;
 
     Vector3 velocity;
 
@@ -45,5 +48,22 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+/*        if (Input.GetButtonDown("Crouch"))
+        {
+            controller.height = 1.9f;
+           
+            isCrouching = true;
+            speed = crouchSpeed;
+
+        }
+            else
+            {
+                controller.height = 3.8f;
+                isCrouching = false;
+                speed = speed;
+            }
+
+*/
     }
 }
