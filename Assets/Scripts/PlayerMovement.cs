@@ -15,13 +15,25 @@ public class PlayerMovement : MonoBehaviour
     public float gourndDistance = 0.4f;
     public LayerMask groundMask;
 
-    public float crouchSpeed = 6f;
-
     bool isGrounded;
 
-    bool isCrouching;
+    private bool isCrouching;
+    private Vector3 originalCenter;
+    private float originalHeight;
+    private float originalMoveSpeed;
 
     Vector3 velocity;
+
+
+    void Start()
+    {
+        transform.tag - "Player";
+        controller = GetComponent<CharacterController>();
+        originalCenter = controller.center;
+        originalHeight = controller.Height;
+        originalMoveSpeed = speed;
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -49,21 +61,16 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-/*        if (Input.GetButtonDown("Crouch"))
+        if (Input.GetButtonDown("Crouch"))
         {
             controller.height = 1.9f;
-           
+            controller.center = new Vector3(0f, -0.5f, 0f);
+            speed = 3f;
             isCrouching = true;
-            speed = crouchSpeed;
 
         }
-            else
-            {
-                controller.height = 3.8f;
-                isCrouching = false;
-                speed = speed;
-            }
+        
 
-*/
+
     }
 }
