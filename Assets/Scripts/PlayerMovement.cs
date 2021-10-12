@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isCrouching;
     private Vector3 originalCenter;
-    private float originalHeight;
+    private float originalHeight = 3.8f;
     private float originalMoveSpeed;
 
     Vector3 velocity;
@@ -27,10 +27,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        transform.tag - "Player";
+        transform.tag = "Player";
         controller = GetComponent<CharacterController>();
         originalCenter = controller.center;
-        originalHeight = controller.Height;
+        originalHeight = controller.height;
         originalMoveSpeed = speed;
 
     }
@@ -63,14 +63,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Crouch"))
         {
-            controller.height = 1.9f;
-            controller.center = new Vector3(0f, -0.5f, 0f);
+            controller.height = 1.3f;
+            controller.center = new Vector3(0f, 0f, 0f);
             speed = 3f;
             isCrouching = true;
 
         }
-        
 
+        if (!Input.GetButton("Crouch") && isCrouching)
+        {
+            controller.height = originalHeight;
+            controller.center = originalCenter;
+            isCrouching = false;
+            speed = originalMoveSpeed;
+        }
 
     }
 }
