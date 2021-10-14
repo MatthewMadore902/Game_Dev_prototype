@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
         if (distance < 70f)
         {
 
-            agent.speed = 5.0f;
+            agent.speed = 7.0f;
 
         }
 
