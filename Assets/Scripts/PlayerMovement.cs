@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
     private float originalHeight = 3.8f;
     private float originalMoveSpeed;
 
+    private bool isSprinting;
+
+
     Vector3 velocity;
 
 
@@ -76,6 +79,17 @@ public class PlayerMovement : MonoBehaviour
             controller.center = originalCenter;
             isCrouching = false;
             speed = originalMoveSpeed;
+        }
+
+        if (Input.GetButton("Sprint"))
+        {
+            isSprinting = true;
+            speed = 30f;
+        }
+        if (!Input.GetButton("Sprint") && isSprinting)
+        {
+            speed = originalMoveSpeed;
+            isSprinting = false;
         }
 
     }
