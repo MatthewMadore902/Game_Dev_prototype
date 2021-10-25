@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
             controller.center = new Vector3(0f, 0f, 0f);
             speed = 3f;
             isCrouching = true;
+            isSprinting = false;
 
         }
 
@@ -85,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isSprinting = true;
             speed = 30f;
+            isCrouching = false;
         }
         if (!Input.GetButton("Sprint") && isSprinting)
         {
