@@ -17,12 +17,12 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGrounded;
 
-    private bool isCrouching;
+    public bool isCrouching;
     private Vector3 originalCenter;
     private float originalHeight = 3.8f;
     private float originalMoveSpeed;
 
-    private bool isSprinting;
+    public bool isSprinting;
 
 
     Vector3 velocity;
@@ -64,13 +64,13 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-        if (Input.GetButtonDown("Crouch"))
+        if (Input.GetButtonDown("Crouch") && isSprinting == false)
         {
             controller.height = 1.3f;
             controller.center = new Vector3(0f, 0f, 0f);
             speed = 3f;
             isCrouching = true;
-            isSprinting = false;
+           
 
         }
 
@@ -82,11 +82,11 @@ public class PlayerMovement : MonoBehaviour
             speed = originalMoveSpeed;
         }
 
-        if (Input.GetButton("Sprint"))
+        if (Input.GetButton("Sprint") && isCrouching == false)
         {
             isSprinting = true;
             speed = 30f;
-            isCrouching = false;
+           
         }
         if (!Input.GetButton("Sprint") && isSprinting)
         {
