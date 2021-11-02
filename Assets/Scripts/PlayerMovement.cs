@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGrounded;
 
+    public float currentSpeed;
     public bool isCrouching;
     private Vector3 originalCenter;
     private float originalHeight = 3.8f;
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentSpeed = controller.velocity.magnitude;
         isGrounded = Physics.CheckSphere(groundCheck.position, gourndDistance, groundMask);
 
         if(isGrounded && velocity.y < 0)
