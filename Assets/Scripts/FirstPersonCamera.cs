@@ -8,7 +8,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     public Transform playerBody;
 
-    float xRotation = 100f;
+    float xRotation;
 
    
 

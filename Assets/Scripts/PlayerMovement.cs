@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    //Camera cam;
     public CharacterController controller;
 
     public float speed = 12f;
@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        //cam = Camera.main;
         transform.tag = "Player";
         controller = GetComponent<CharacterController>();
         originalCenter = controller.center;
@@ -95,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
             speed = originalMoveSpeed;
             isSprinting = false;
         }
+
 
     }
 }
