@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour
 {
-    public float speed = 5f;
+
+    public float speed;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        OnColliderEnter();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-    void OnTriggerEnter(Collider other)
+
+    public void OnColliderEnter(Collider other)
     {
-
-        if (other.tag == "Player")
+        if (other.name == "Player")
         {
-            speed = 5f;
+            speed -= 10f;
         }
-
+        else
+        {
+            
+        }
     }
 }
