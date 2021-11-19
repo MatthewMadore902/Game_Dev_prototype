@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
 
+    public bool slime;
 
     void Start()
     {
@@ -97,6 +98,18 @@ public class PlayerMovement : MonoBehaviour
             isSprinting = false;
         }
 
-
+        
     }
+	void OnTriggerEnter(Collider other)
+	{
+        if (other.tag == "Slime" && isSprinting == false)
+        {
+            slime = true;
+            speed = 5f;
+        }
+        else 
+        {
+            slime = false;
+        }
+	}
 }

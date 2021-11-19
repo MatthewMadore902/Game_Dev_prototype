@@ -10,7 +10,7 @@ public class Slime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OnColliderEnter();
+
     }
 
     // Update is called once per frame
@@ -19,15 +19,13 @@ public class Slime : MonoBehaviour
         
     }
 
-    public void OnColliderEnter(Collider other)
+
+    void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Player")
+
+        if (other.tag == "Player")
         {
-            speed -= 10f;
-        }
-        else
-        {
-            
+           speed = 5f;
         }
     }
 }
