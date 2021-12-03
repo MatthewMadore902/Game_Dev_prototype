@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     private float originalHeight = 3.8f;
     private float originalMoveSpeed;
 
+    public TextMeshProUGUI CountText;
+    public int count;
+
     public bool isSprinting;
 
 
@@ -38,11 +42,17 @@ public class PlayerMovement : MonoBehaviour
         originalCenter = controller.center;
         originalHeight = controller.height;
         originalMoveSpeed = speed;
-
+        SetCountText();
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetCountText()
+    {
+        CountText.text = "Count:" + count.ToString();
+
+    }
+	
+	// Update is called once per frame
+	void Update()
     {
         currentSpeed = controller.velocity.magnitude;
         isGrounded = Physics.CheckSphere(groundCheck.position, gourndDistance, groundMask);
@@ -111,5 +121,12 @@ public class PlayerMovement : MonoBehaviour
         {
             slime = false;
         }
-	}
+        if (other.gameObject.CompareTag("Salt"))
+        {
+            other.gameObject.SetActive(false);
+            count = count + 1;
+
+            SetCountText();
+        }
+    }
 }
