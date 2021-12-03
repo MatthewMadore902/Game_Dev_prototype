@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
-    public float lookRadius = 10f;
+    public float lookRadius = 15f;
     
 
     Transform target;

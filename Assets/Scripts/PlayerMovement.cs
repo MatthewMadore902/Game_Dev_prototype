@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public int count;
 
     public bool isSprinting;
+    public GameObject Win;
 
 
     Vector3 velocity;
@@ -112,8 +113,9 @@ public class PlayerMovement : MonoBehaviour
     }
 	void OnTriggerEnter(Collider other)
 	{
-        if (other.tag == "Slime" && isSprinting == false)
+        if (other.tag == "Slime")
         {
+            isSprinting = false;
             slime = true;
             speed = 5f;
         }
@@ -127,6 +129,10 @@ public class PlayerMovement : MonoBehaviour
             count = count + 1;
 
             SetCountText();
+        }
+        if (count >= 3)
+        {
+            Win.SetActive(true);
         }
     }
 }
