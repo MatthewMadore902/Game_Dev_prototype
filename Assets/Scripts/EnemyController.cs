@@ -39,6 +39,10 @@ public class EnemyController : MonoBehaviour
             agent.speed = 7.0f;
 
         }
+        else 
+        {
+            return;
+        }
 
     }
 

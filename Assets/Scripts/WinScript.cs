@@ -7,6 +7,8 @@ public class WinScript : MonoBehaviour
 {
     //public TextMeshProUGUI WinText;
     public GameObject WinText;
+    public PlayerMovement playerMovement;
+    public EnemyController enemyMovement;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +23,8 @@ public class WinScript : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
         WinText.SetActive(true);
+        
+        playerMovement.enabled = false;
+        enemyMovement.enabled = false;
 	}
 }
